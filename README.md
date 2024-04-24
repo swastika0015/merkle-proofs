@@ -30,7 +30,7 @@ All transactions are grouped in pairs in the Merkle tree structure. Each pair ha
 
 For example, consider the Merkle tree with four transactions- T1, T2, T3, and T4. 
 
-![Merkle Tree](assets/merkle tree.png)
+![Merkle Tree](assets/merkleTree.png)
 
 
 ## Merkle Proofs

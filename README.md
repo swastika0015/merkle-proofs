@@ -18,7 +18,7 @@ If you’re new to Web3, these terms might seem unfamiliar and confusing, but fe
 - [Implementing Merkle proofs to whitelist email addresses](#ImplementingMerkleproofstowhitelistemailaddresses)
 
 Hash Function in blockchain 
-Before getting into Merkle proof and Merkle tree, let’s understand what is a hash function. A hash function is a mathematical function that takes an input string of any length and converts it to a fixed-length output string called a hash value. In blockchain, the  transactions are taken as inputs and the hash algorithm gives an output of a fixed size. The size of hash value can vary depending on the hash function one has used. For example hash function ```Keccak-256``` generates 32 byte hash value.
+Before getting into Merkle proof and Merkle tree, let’s understand what is a hash function. A hash function is a mathematical function that takes an input string of any length and converts it to a fixed-length output string called a hash value. In blockchain, the  transactions are taken as inputs and the hash algorithm gives an output of a fixed size. The size of hash value can vary depending on the hash function one has used. For example hash function ```Keccak-256``` generates 32 byte hash value. If there are an odd number of leaf nodes, the last leaf is duplicated and the same hash value is used until there are enough intermediate nodes to maintain balance in the tree structure.
 
 ## Merkle Tree
 A Merkle tree, named after Ralph Merkle  is a binary structure tree of hash values. In Merkle tree, the last node of the tree called leaf node is a hash of transaction data, and the intermediate nodes called non-leaf nodes are a hash of its children and the hash at the top is referred to as the “Root”. 
@@ -71,6 +71,7 @@ let emailAddresses = [
    "test1@gmail.com",
    "test2@gmail.com",
    "test3@gmail.com",
+
 ];
 
 ```
@@ -114,4 +115,66 @@ valuesToCheck.forEach( (value => {
     console.log(isWhitelisted); // returns true or false
 }) );
 ```
+
+### Testing:
+Since the Email addresses (data) in ```valuesToCheck``` are included in the Merkle tree, the output will be true. 
+```bash
+true
+true
+true
+```
+Let's change the data and check if they are whitelisted or not.
+```js
+let valuesToCheck = [
+    "test1@gmail.com",
+    "test2@gmail.com",
+    "test3@gmail.com",
+    "test4@gmail.com",
+    "not whitelisted",
+];
+```
+The first three emails are included int the Merkle tree but the rest of the datasets are not. You can try changing the first dataset created to  : 
+```
+true
+true
+true
+false
+false
+```
+
+We can print the Merkle tree structure and Merkle proof path as well:
+```js
+// Merkle Tree structure
+console.log(merkleTree.toString());
+
+//Output: 
+└─ bf7addb5243da37965dbccb6ed456ceb55b81aa7e5ab2a41379b1742fdf222f0
+   ├─ ec0b79751b4a12ce50fe71b6fa7b1583df0a1fa676827d0a7030a1170ca1c032
+   │  ├─ 231e1a4d644b6760a8d51cae313e8a78c35e4783bfaf5225712734939387d148
+   │  └─ 8de86150eaaafcb9367396f2bee0cfd657854c6c561b741f6f8ef4fb28e82e12
+   └─ 2746415648413ade4abc137894b0fa189d921433053a910c955568a6265c00e6
+      └─ 2746415648413ade4abc137894b0fa189d921433053a910c955568a6265c00e6
+```
+
+```js
+//Merkle proof of each value
+console.log(proof);
+
+//Output: 
+[
+  '0x8de86150eaaafcb9367396f2bee0cfd657854c6c561b741f6f8ef4fb28e82e12',
+  '0x2746415648413ade4abc137894b0fa189d921433053a910c955568a6265c00e6'
+]
+[
+  '0x231e1a4d644b6760a8d51cae313e8a78c35e4783bfaf5225712734939387d148',
+  '0x2746415648413ade4abc137894b0fa189d921433053a910c955568a6265c00e6'
+]
+[
+  '0xec0b79751b4a12ce50fe71b6fa7b1583df0a1fa676827d0a7030a1170ca1c032'
+]
+```
+
+I hope you enjoyed the tutorial and gained a better understanding of Merkle Proofs. They play a crucial role in ensuring data integrity and security, especially in blockchain systems like Bitcoin and Ethereum. As datasets grow, managing Merkle trees becomes more complex, but their efficiency in verifying large amounts of data remains unparalleled. Keep exploring and experimenting with Merkle Proofs, as they continue to evolve and find new applications in different fields.
+
+Happy coding!
 

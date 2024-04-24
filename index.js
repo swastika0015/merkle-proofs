@@ -1,37 +1,39 @@
 const { MerkleTree } = require("merkletreejs");
 const keccak256 = require("keccak256");
 
-// List of email addresses to whitelist
+// list of email addresses to whitelist
 let emailAddresses = [
     "test1@gmail.com",
     "test2@gmail.com",
     "test3@gmail.com",
 ];
 
-// Hash email addresses to get the leaves
+// hash email addresses to get the leaves
 let leaves = emailAddresses.map(email => keccak256(email));
 
-// Create Merkle Tree
+// create Merkle Tree
 let merkleTree = new MerkleTree(leaves, keccak256, { sortPairs: true });
 
-// Get root hash
+// get root hash
 let rootHash = merkleTree.getRoot().toString('hex');
 
-console.log('Root hash:', rootHash);
+// print the Merkle Tree structure
+// console.log(merkleTree.toString());
 
-// Pretty-print the Merkle Tree structure
-console.log(merkleTree.toString());
-
+// testing to whitelist 3 email addresses
 let valuesToCheck = [
     "test1@gmail.com",
     "test2@gmail.com",
     "test3@gmail.com",
 ];
+
+// verifying with Merkle proof
 valuesToCheck.forEach( (value => {
     let hashedEmail = keccak256(value);
     let proof = merkleTree.getHexProof(hashedEmail);
+    console.log(proof);
     let isWhitelisted = merkleTree.verify(proof, hashedEmail, rootHash);
-    console.log(isWhitelisted); // Returns true or false
+    console.log(isWhitelisted); // returns true or false
 }) );
 
 

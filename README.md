@@ -53,7 +53,7 @@ Getting started
 Make sure you have Node.js installed on your system. You can download and install it from the official Node.js website.
 After installing Node.js, navigate to your project directory in the terminal and run the following command to install merkletreejs:
 
-From [NPM](https://www.npmjs.com/package/merkletreejs):
+From [npm](https://www.npmjs.com/package/merkletreejs):
 
 ```bash
 npm install merkletreejs
@@ -70,7 +70,7 @@ const keccak256 = require("keccak256");
 ### Creating a list of Email addresses: 
 
  ```js
-////list of email addresses to whitelist
+//list of email addresses to whitelist
 let emailAddresses = [
    "test1@gmail.com",
    "test2@gmail.com",

@@ -19,6 +19,7 @@ If you’re new to Web3, these terms might seem unfamiliar and confusing, but fe
 
 Hash Function in blockchain 
 Before getting into Merkle proof and Merkle tree, let’s understand what is a hash function. A hash function is a mathematical function that takes an input string of any length and converts it to a fixed-length output string called a hash value. In blockchain, the  transactions are taken as inputs and the hash algorithm gives an output of a fixed size. The size of hash value can vary depending on the hash function one has used. For example hash function ```Keccak-256``` generates 32 byte hash value. If there are an odd number of leaf nodes, the last leaf is duplicated and the same hash value is used until there are enough intermediate nodes to maintain balance in the tree structure.
+![Merkle Tree](assets/hash.png)
 
 ## Merkle Tree
 A Merkle tree, named after Ralph Merkle  is a binary structure tree of hash values. In Merkle tree, the last node of the tree called leaf node is a hash of transaction data, and the intermediate nodes called non-leaf nodes are a hash of its children and the hash at the top is referred to as the “Root”. 
@@ -28,6 +29,9 @@ All transactions are grouped in pairs in the Merkle tree structure. Each pair ha
 
 
 For example, consider the Merkle tree with four transactions- T1, T2, T3, and T4. 
+
+![Merkle Tree](assets/merkle tree.png)
+
 
 ## Merkle Proofs
 A Merkle Proof, also known as a Merkle Authentication Path is a path from the leaf all the way up to the root along with the necessary sibling node required for the hash value of parent node. prove that a specific piece of data is indeed part of Merkle tree, without needing access to the entire Merkle tree.
@@ -177,4 +181,3 @@ console.log(proof);
 I hope you enjoyed the tutorial and gained a better understanding of Merkle Proofs. They play a crucial role in ensuring data integrity and security, especially in blockchain systems like Bitcoin and Ethereum. As datasets grow, managing Merkle trees becomes more complex, but their efficiency in verifying large amounts of data remains unparalleled. Keep exploring and experimenting with Merkle Proofs, as they continue to evolve and find new applications in different fields.
 
 Happy coding!
-

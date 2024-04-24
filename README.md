@@ -75,7 +75,6 @@ let emailAddresses = [
    "test1@gmail.com",
    "test2@gmail.com",
    "test3@gmail.com",
-
 ];
 
 ```
@@ -95,6 +94,18 @@ let merkleTree = new MerkleTree(leaves, keccak256, { sortPairs: true });
 
 // get root hash
 let rootHash = merkleTree.getRoot().toString('hex');
+
+// We can print the Merkle tree structure:
+console.log(merkleTree.toString());
+```
+Output: This is what the Merkle tree structure looks like. Since there is an odd number of leaves, the last leaf is duplicated. 
+```bash
+└─ bf7addb5243da37965dbccb6ed456ceb55b81aa7e5ab2a41379b1742fdf222f0
+   ├─ ec0b79751b4a12ce50fe71b6fa7b1583df0a1fa676827d0a7030a1170ca1c032
+   │  ├─ 231e1a4d644b6760a8d51cae313e8a78c35e4783bfaf5225712734939387d148
+   │  └─ 8de86150eaaafcb9367396f2bee0cfd657854c6c561b741f6f8ef4fb28e82e12
+   └─ 2746415648413ade4abc137894b0fa189d921433053a910c955568a6265c00e6
+      └─ 2746415648413ade4abc137894b0fa189d921433053a910c955568a6265c00e6
 ```
 
 ### Emails to be whitelisted:
@@ -146,19 +157,6 @@ false
 false
 ```
 
-We can print the Merkle tree structure and Merkle proof path as well:
-```js
-// Merkle Tree structure
-console.log(merkleTree.toString());
-
-//Output: 
-└─ bf7addb5243da37965dbccb6ed456ceb55b81aa7e5ab2a41379b1742fdf222f0
-   ├─ ec0b79751b4a12ce50fe71b6fa7b1583df0a1fa676827d0a7030a1170ca1c032
-   │  ├─ 231e1a4d644b6760a8d51cae313e8a78c35e4783bfaf5225712734939387d148
-   │  └─ 8de86150eaaafcb9367396f2bee0cfd657854c6c561b741f6f8ef4fb28e82e12
-   └─ 2746415648413ade4abc137894b0fa189d921433053a910c955568a6265c00e6
-      └─ 2746415648413ade4abc137894b0fa189d921433053a910c955568a6265c00e6
-```
 
 ```js
 //Merkle proof of each value

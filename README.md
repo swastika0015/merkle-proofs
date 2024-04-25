@@ -19,7 +19,8 @@ If you’re new to Web3, these terms might seem unfamiliar and confusing, but fe
 
 
 ## Hash Function in blockchain 
-Before getting into Merkle proof and Merkle tree, let’s understand what is a hash function. A hash function is a mathematical function that takes an input string of any length and converts it to a fixed-length output string called a hash value. In blockchain, the  transactions are taken as inputs and the hash algorithm gives an output of a fixed size. The size of hash value can vary depending on the hash function one has used. For example hash function ```Keccak-256``` generates 32 byte hash value. If there are an odd number of leaf nodes, the last leaf is duplicated and the same hash value is used until there are enough intermediate nodes to maintain balance in the tree structure.
+Before getting into Merkle proof and Merkle tree, let’s understand what a hash function is. A hash function is a mathematical function that takes an input string of any length and converts it to a fixed-length output string called a hash value. In blockchain, the  transactions are taken as inputs and the hash algorithm gives an output of a fixed size. The size of hash value can vary depending on the hash function one has used. For example, hash function ```Keccak-256``` generates a 32 byte hash value. If there are an odd number of leaf nodes, the last leaf is duplicated and the same hash value is used until there are enough intermediate nodes to maintain balance in the tree structure.
+
 ![Merkle Tree](assets/hash.png)
 
 ## Merkle Tree
@@ -124,7 +125,7 @@ let valuesToCheck = [
 ```
 
 ### Whitelisting Emails with Merkle proof:
-We will iterate over all the values in ```valuesToCheck``` array, hash it using the ```keccak256``` function. <br>
+Iterate over all the values in ```valuesToCheck``` list, hash it using the ```keccak256``` function. <br>
 Now using the hash value, retrieve the Merkle proof- consisting of sibling nodes along the path from the leaf node to the root node.  <br>
 The ```verify``` method will ensure that the provided Merkle proof, when combined with the hashed email, leads to the calculated root hash and returns ```true```, otherwise false. 
 ```js

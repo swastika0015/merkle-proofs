@@ -34,7 +34,7 @@ A Merkle tree, named after Ralph Merkle, is a binary structure tree of hash valu
 All leaves are grouped in pairs in the Merkle tree structure. Each pair has a computed hash that is stored directly in the parent node. These nodes are then grouped into pairs, and their hash is stored on the next level up. This process continues until reaching the top of the Merkle tree.
 
 
-For example, consider the Merkle tree with four transactions- T1, T2, T3, and T4. These transactional data will be hashed before being stored as a leaf node resulting in H1- Hash of T1, H2- Hash of T2, and so on for H3 and H4.  Now consecutive pairs of leaf nodes will be hashed to create a parent node. Hashing H1 and H2 will result in H12, similarly hashing H3 and H4 will result in H34. Lastly, H12 and H34 are then hashed to create root hash H1234.
+For example, consider the Merkle tree with four transactions- T1, T2, T3, and T4. These transactional data will be hashed before being stored as a leaf node resulting in H1- Hash of T1, H2- Hash of T2, and similarly for H3 and H4. Now consecutive pairs of leaf nodes will be hashed to create a parent node. Hashing H1 and H2 will result in H12, similarly hashing H3 and H4 will result in H34. Lastly, H12 and H34 are then hashed to create root hash H1234.
 
 
 ![Merkle Tree](assets/merkleTree.png)

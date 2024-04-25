@@ -45,11 +45,11 @@ A Merkle Proof, also known as a Merkle Authentication Path is a path from the le
 
 
 For example, let’s use the above Merkle tree and create a Merkle proof for data T2. 
-To generate a Merkle proof for data T2, we will traverse the tree from the leaf node containing the hash of data T2 up to the root node and collect the hash values of the sibling nodes encountered during the traversal. These sibling hashes constitute the Merkle proof for data T2.
+To generate a Merkle proof for data T2, we will traverse the tree from the leaf node containing the hash of data T2 up to the root node and collect the hash values of the sibling nodes encountered during the traversal. These sibling hashes constitute the Merkle proof for data T2. This sequence of hashes or the path will be used to verify if data T2 is a part of Merkle tree or not. 
 
 ![Merkle Tree](assets/merkleProof.png)
 
-To verify the Merkle proof for data T2, start with the hash of data T2 and use the collected sibling hashes to recreate the path up to the root node. Then compare the resulting root hash with the known root hash of the Merkle tree. The root calculated is the same as the provided root, so the data T2 is indeed a part of Merkle tree. 
+To verify the Merkle proof for data T2, start with the hash of data T2 and use the collected sibling hashes to recreate the path up to the root node. Then compare the resulting root hash with the known root hash of the Merkle tree. The root calculated is the same as the provided root, hence the data T2 is indeed a part of Merkle tree. 
 
 
 ## Implementing Merkle Proofs to whitelist Email addresses

@@ -23,13 +23,14 @@ Before getting into Merkle proof and Merkle tree, let’s understand what is a h
 ![Merkle Tree](assets/hash.png)
 
 ## Merkle Tree
-A Merkle tree, named after Ralph Merkle  is a binary structure tree of hash values. In Merkle tree, the last node of the tree called leaf node is a hash of transaction data, and the intermediate nodes called non-leaf nodes are a hash of its children and the hash at the top is referred to as the “Root”. 
+A Merkle tree, named after Ralph Merkle, is a binary structure tree of hash values. It acts as a summary of all the transactions in a block, enabling fast and secure verification of data across larger datasets. In Merkle tree, the last node of the tree called the leaf is a hash of transaction data, the intermediate node is referred to as the non-leaf node is a hash of its children, and the hash at the top is referred to as the root. 
 
 
-All transactions are grouped in pairs in the Merkle tree structure. Each pair has a computed hash that is stored directly in the parent node. These nodes are then grouped into pairs, and their hash is stored on the next level up. This process continues until reaching the root of the Merkle tree.
+All leaves are grouped in pairs in the Merkle tree structure. Each pair has a computed hash that is stored directly in the parent node. These nodes are then grouped into pairs, and their hash is stored on the next level up. This process continues until reaching the top of the Merkle tree.
 
 
-For example, consider the Merkle tree with four transactions- T1, T2, T3, and T4. 
+For example, consider the Merkle tree with four transactions- T1, T2, T3, and T4. These transactional data will be hashed before being stored as a leaf node resulting in H1- Hash of T1, H2- Hash of T2, and so on for H3 and H4.  Now consecutive pairs of leaf nodes will be hashed to create a parent node. Hashing H1 and H2 will result in H12, similarly hashing H3 and H4 will result in H34. Lastly, H12 and H34 are then hashed to create root hash H1234.
+
 
 ![Merkle Tree](assets/merkleTree.png)
 
@@ -42,11 +43,14 @@ To generate a Merkle proof for data T2, we will traverse the tree from the leaf 
 To verify the Merkle proof, start with the hash of data T2 and use the collected sibling hashes to recreate the path up to the root node. Then compare the resulting root hash with the known root hash of the Merkle tree. If they match, the Merkle proof is valid, indicating that data T2 is indeed part of the Merkle tree.
 Here the root hash is similar, so it is validated that T2 is a part of Merkle tree. 
 
+![Merkle Tree](assets/merkleProof.png)
+
+To verify the data T2, start traversing from its leaf node and the sibling in the proof (refer to the above image). It will keep on hashing the nodes until the root node. In this example, the root calculated is the same as the provided root, so the data T2 is indeed a part of Merkle tree. 
 
 ## Implementing Merkle Proofs to whitelist Email addresses
 
 Now, let’s see how Merkle Proofs can be utilized for whitelisting email addresses, ensuring data integrity and security. For this tutorial, we will use Javascript and ```merkletreejs``` library to create a Merkle tree and ```keccak256``` to hash the data. 
-To follow along with the tutorial, you can either clone the repository and run node index.js in your terminal or follow the instructions below to create your own merkle tree to whitelist email addresses.
+To follow along with the tutorial, you can either clone the repository and run node index.js in your terminal or follow the instructions below to create your own Merkle tree to whitelist email addresses.
 Getting started
 
 ### Install merkletreejs and keccak256:

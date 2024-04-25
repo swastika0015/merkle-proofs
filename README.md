@@ -167,6 +167,7 @@ false
 false
 ```
 
+Let's also print the Merkle proof path for each value to see how it is traversed during verification. 
 
 ```js
 //Merkle proof of each value

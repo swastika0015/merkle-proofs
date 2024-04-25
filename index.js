@@ -31,7 +31,8 @@ let valuesToCheck = [
 valuesToCheck.forEach( (value => {
     let hashedEmail = keccak256(value);
     let proof = merkleTree.getHexProof(hashedEmail);
-    console.log(proof);
+    // print the Merkle proof path for each value
+    // console.log(proof);
     let isWhitelisted = merkleTree.verify(proof, hashedEmail, rootHash);
     console.log(isWhitelisted); // returns true or false
 }) );

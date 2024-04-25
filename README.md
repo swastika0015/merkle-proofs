@@ -14,11 +14,11 @@ If you’re new to Web3, these terms might seem unfamiliar and confusing, but fe
 
 - [Hash Function](#HashFunction)
 - [Merkle tree](#Merkletree)
-- [Merkle proofs](#Merkleproofs)
+- [Merkle proof](#Merkleproofs)
 - [Implementing Merkle proofs to whitelist email addresses](#ImplementingMerkleproofstowhitelistemailaddresses)
 
 
-## Hash Function in blockchain 
+## Hash Function
 Before getting into Merkle proof and Merkle tree, let’s understand what a hash function is. A hash function is a mathematical function that takes an input string of any length and converts it to a fixed-length output string called a hash value. In blockchain, the  transactions are taken as inputs and the hash algorithm gives an output of a fixed size. 
 
 The size of hash value can vary depending on the hash function used. For example, hash function ```Keccak-256``` generates a 32 byte hash value. If there are an odd number of leaf nodes, the last leaf is duplicated and the same hash value is used until there are enough intermediate nodes to maintain balance in the tree structure.

@@ -41,9 +41,10 @@ For example, consider the Merkle tree with four transactions- T1, T2, T3, and T4
 
 
 ## Merkle Proofs
-A Merkle Proof, also known as a Merkle Authentication Path is a path from the leaf all the way up to the root along with the necessary sibling node required for the hash value of parent node. It is a method to prove that a specific piece of data is indeed part of Merkle tree, without needing access to the entire Merkle tree.
-For example, let’s use the above Merkle tree and create a Merkle proof for data T2. 
+A Merkle Proof, also known as a Merkle Authentication Path is a path from the leaf all the way up to the root along with the necessary sibling node required for the hash value of parent node. It is a method to prove that a specific piece of data is a part of Merkle tree, without needing access to the entire Merkle tree.
 
+
+For example, let’s use the above Merkle tree and create a Merkle proof for data T2. 
 To generate a Merkle proof for data T2, we will traverse the tree from the leaf node containing the hash of data T2 up to the root node and collect the hash values of the sibling nodes encountered during the traversal. These sibling hashes constitute the Merkle proof for data T2.
 
 ![Merkle Tree](assets/merkleProof.png)
